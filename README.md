@@ -3,5 +3,5 @@ This python application queries an api for the current price of any provided cur
 total price a given number of coins.
 
 ## Usage
-python cryptoprice.py {number} {name}
-where number will be replaced by number of coins and name by name of coin
+python cryptoprice.py {number} {name}<br>
+* where number will be replaced by number of coins and name by name of coin
