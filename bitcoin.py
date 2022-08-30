@@ -19,34 +19,34 @@ def intWithCommas(x):
     return "%d%s" % (x, result)
 
 # check command line arguments
-if len(sys.argv) < 2:
+if len(sys.argv) < 3:
      sys.exit("Missing command line argument.")
-elif len(sys.argv) > 2:
+elif len(sys.argv) > 3:
      sys.exit("Too many command line arguments.")
 else:
      try:
           #confirms if user inputed a corect value of bitcoin
           amount = float(sys.argv[1])
+
+          coin = sys.argv[2].lower()
      except:
           sys.exit("Command line arguement is not a number.")
      try:
           # queries api for live prices
-          responce = requests.get("https://api.coindesk.com/v1/bpi/currentprice.json")
+          responce = requests.get(f"https://api.coincap.io/v2/assets/{coin}")
           object = responce.json()
 
           # indexes into json object to get desired values
-          price = object['bpi']['USD']['rate']
-          price = price.replace(",", "")
-          price = float(price) * amount
+          price = object['data']['priceUsd']
+          price = round(float(price) * amount, 3)
           price = str(price)
           
           a, b = price.split('.')
           a = int(a)
 
           # prints results of the comma function
-          print(f"${intWithCommas(a)}.{b}")
+          print(f"{amount} {coin}s is ${intWithCommas(a)}.{b}")
 
           
      except:
           sys.exit("Something went wrong, Try again.")
-     
