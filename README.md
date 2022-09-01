@@ -1,5 +1,5 @@
 # Live CryptoCurrency Price Calculator
-This python application queries an api for the current price of any provided currency and calculates how
+This python application queries an api for the current price of any provided currency and calculates the
 total price a given number of coins.
 
 ## Usage
